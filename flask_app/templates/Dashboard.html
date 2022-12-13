@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='LoginPage.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Home Page</title>
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <nav>
+                <p>Home</p>
+                <a href="/new-tournament" id="logout">New Tournament</a>
+                <a href="/event-search" id="logout">Search Tournaments</a>
+                <a href="/logout" id="logout">Logout</a>
+            </nav>
+            <h1>Welcome {{ user.first_name }} !!! </h1>
+        </div>
+        <div class="todayevent">
+            <p>Today is DATE and you have these events today :</p>
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Location Name</th>
+                    <th>Attendees</th>
+                    <th>Time</th>
+                </tr>
+                {%for event in events%}
+                <tr>
+                    {%if user.id == event.user_id: %}
+                    {% if event.date == time: %}
+                        <td>{{event.name}}</td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.num_of_users}}</td>
+                        <td>{{event.time}}</td>
+                    {%endif%}
+                    {%endif%}
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="futureevents">
+            <p>These are your upcoming events:</p>
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Location Name</th>
+                    <th>Attendees</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                {%for event in events%}
+                    {% if event.date != time: %}
+                    <tr>
+                        {%if user.id == event.user_id: %}
+                            <td>{{event.name}}</td>
+                            <td>{{event.location}}</td>
+                            <td>{{event.num_of_users}}</td>
+                            <td>{{event.date}}</td>
+                            <td>{{event.time}}</td>
+                        {%endif%}
+                    </tr>
+                    {%endif%}
+                {%endfor%}
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

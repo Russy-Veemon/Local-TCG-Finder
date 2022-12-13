@@ -1,0 +1,189 @@
+* {
+    background-color: #EEEFEA;
+    color: rgb(235, 94, 90);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    float: right;
+    color: #7E9392;
+    text-align: center;
+    padding: 14px 16px;
+    padding-right: 200px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+table, td, th {
+    border: 1px solid #a5A09C;
+}
+
+td, th {
+    padding: 5px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav a{
+    margin: 0 20px;
+}
+
+/* log in page */
+form, h1, input, .info {
+    background-color: #F3D8D1;
+    color: #a5A09C;
+    border-radius: 4px;
+}
+
+input, select {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.box {
+    display: block;
+    margin-bottom: 5px;
+    border: solid #a5A09C 2px;
+    width: 600px;
+    padding: 20px;
+}
+
+.red {
+    color: red;
+    background-color: #F3D8D1;
+}
+
+.mainpage {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-content: center;
+    justify-content: space-evenly;
+    padding: 40px;
+}
+
+.leftside, .rightside {
+    display: flex;
+    flex-direction: column;
+    border: #7E9392 solid 5px;
+    width: 300px;
+    height: 450px;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #F3D8D1;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+#btn {
+    background-color: #9aeee9;
+    border: #a5A09C solid 2px;
+    border-radius: 3px;
+}
+
+#btn {
+    background-color: #F3D8D1;
+    border: #a5A09C solid 2px;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* magazine homepage */
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headeright {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+
+table{
+    overflow-y: scroll;
+    height: 500px;
+    display: block;
+}
+
+.magrow {
+    display: flex;
+    flex-direction: row;
+    width: 600px;
+    padding: 20px;
+}
+
+.magcontent {
+    display: flex;
+    border: #a5A09C 2px solid;
+    width: 350px;
+    margin: 5px 0px;
+    padding: 5px;
+
+}
+
+.magmain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 40px;
+}
+
+.magdisplay {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin: 5px 0px;
+    padding: 5px;
+}
+
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+  /* Style the buttons that are used to open the tab content */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+  /* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+  /* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+  /* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

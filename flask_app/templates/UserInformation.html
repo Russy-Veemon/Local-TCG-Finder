@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <nav>
+                <a href="/dashboard" id="logout">Home</a> |
+                <a href="/new-tournament" id="logout">New Tournament</a> |
+                <a href="/event-search" id="logout">Search Tournaments</a> |
+                <a href="/logout" id="logout">Logout</a>
+            </nav>
+        </div>
+        <div class="mainpage">
+            <div class="leftside">
+                <div>
+                    <p>Name:</p>
+                    <p>Email:</p>
+                    <p>Password:</p>
+                    <a href="">Edit</a>
+                </div>
+                <div>
+                    <h4>Event History:</h4>
+                    <p>jinja syntax stuff with date as the factor for filtering</p>
+                </div>
+                <div>
+                    <h4>Future Events:</h4>
+                    <p>jinja syntax again with date as the factor for filtering</p>
+                </div>
+            </div>
+            <div class="rightside">
+                <p>Click on the "Choose File" button to upload a file:</p>
+                <form action="/action_page.php">
+                    <input type="file" id="myFile" name="filename">
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

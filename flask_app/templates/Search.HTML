@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='LoginPage.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Search</title>
+</head>
+<body>
+    <div>
+        <div class="navbar">
+            <nav>
+                <a href="/dashboard" id="logout">Home</a> |
+                <a href="/new-tournament" id="logout">New Tournament</a> |
+                <p>Search Tournaments</p> |
+                <a href="/logout" id="logout">Logout</a>
+            </nav>
+        </div>
+        <div class="searchbar">
+            <h3>TCG LOCALS</h3>
+            <label for="TCGLocals">Search By:</label>
+            <form action="/event-search/game">
+                <select name="game" id="language">
+                    <option value="" disabled selected hidden>Pick A Game</option>
+                    <option value="OnePiece">One Piece</option>
+                    <option value="Dragonball Super">DBS</option>
+                    <option value="Yugioh">Yu-Gi-Oh</option>
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="Digimon">Digimon</option>
+                    <option value="MTG">MTG</option>
+                </select>
+                <input type="submit" value="Submit" class="myButton">
+            </form>
+        </div>
+        <div class="results">
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Event Name</th>
+                    <th>Location Name</th>
+                    <th>Date</th>
+                    <th>Creator</th>
+                    <th>Game</th>
+                    <th># of Players</th>
+                    <th>Action</th>
+                </tr>
+                <!-- need multiple pages that the jinja syntax is checking by the id of the event, to filter when asked what type of event people are looking for. -->
+                {%for event in events%}
+                    <tr>
+                        <td>{{event.id}}</td>
+                        <td><a href="/eventinfo/{{event.id}}">{{event.name}}</a></td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.date}}</td>
+                        <td>{{event.name}}</td>
+                        <td>{{event.game}}</td>
+                        <td>{{event.num_applied}}/{{event.num_of_users}}</td>
+                        {% if event.num_applied != event.num_of_users: %}
+                        {% if user.id != event.user_id: %}
+                        <td>
+                            <form action="/join_event" method="post">
+                                <input type="hidden" value="{{session['user_id']}}" name="user_id">
+                                <input type="hidden" value="{{event.id}}" name="event_id">
+                                <input type="submit" value="Join">
+                            </form>
+                        </td>
+                        {%endif%}
+                        {%endif%}
+                    </tr>
+                {%endfor%}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
