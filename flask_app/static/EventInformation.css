@@ -4,7 +4,7 @@
 .tab {
 float: left;
 border: 1px solid #ccc;
-background-color: #f1f1f1;
+background-color: #181724;
 width: 30%;
 height: 300px;
 }
@@ -25,19 +25,19 @@ transition: 0.3s;
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-background-color: #ddd;
+background-color: #181724;
 }
 
 /* Create an active/current "tab button" class */
 .tab button.active {
-background-color: #ccc;
+background-color: #181724;
 }
 
 /* Style the tab content */
 .tabcontent {
 float: left;
 padding: 0px 12px;
-border: 1px solid #ccc;
+border: 1px solid #181724;
 width: 70%;
 border-left: none;
 height: 300px;

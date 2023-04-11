@@ -9,7 +9,7 @@
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Home Page</title>
 </head>
-<body>
+<body class="black">
     <div>
         <div class="navbar">
             <nav>
@@ -55,7 +55,7 @@
                 </tr>
                 <tr>
                 {%for event in events%}
-                    {% if event.date != time: %}
+                    {% if event.date >= time: %}
                     <tr>
                         {%if user.id == event.user_id: %}
                             <td>{{event.name}}</td>

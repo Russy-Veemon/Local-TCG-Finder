@@ -51,9 +51,7 @@ class Event:
         ON events.id = users_events.event_id 
         LEFT JOIN users 
         ON users.id = users_events.user_id;"""
-        #  WHERE user_id = 1
         results:list[dict] = connectToMySQL(db).query_db(query)
-        # print(results[3])
         event_objects:list[Event] = []
         for event in results:
             event_objects.append(cls(event))
@@ -81,11 +79,9 @@ class Event:
         print(f"get event by id {event_id}")
         data = {"id": event_id}
         query = """SELECT events.id as event_id, events.created_at, events.updated_at, name, game, date, time, location, users.id as user_id, num_applied, num_of_users, information, first_name, last_name, email, password, users.created_at as uc, users.updated_at as uu FROM events LEFT JOIN users_events ON events.id = users_events.event_id LEFT JOIN users ON users.id = users_events.user_id WHERE events.id = %(id)s;"""
-        # JOIN users on users.id = events.user_id WHERE events.id = %(id)s
         result = connectToMySQL(db).query_db(query,data)
         result = result[0]
         event = cls(result)
-        print("I am gay.")
         print(event)
         event.user = User.User(
             {
@@ -100,58 +96,6 @@ class Event:
         )
         print(event.user)
         return event
-
-    # @classmethod
-    # def get_all_events_by_id(cls, user_id):
-    #     data = {"id": user_id}
-    #     query = """
-    #     SELECT events.id as event_id,
-    #     events.created_at,
-    #     events.updated_at,
-    #     name,
-    #     game,
-    #     date, 
-    #     time, 
-    #     location, 
-    #     users.id as user_id, 
-    #     num_applied, 
-    #     num_of_users, 
-    #     information, 
-    #     first_name, 
-    #     last_name, 
-    #     email, 
-    #     password, 
-    #     users.created_at as uc, 
-    #     users.updated_at as uu 
-    #     FROM users 
-    #     JOIN users_events 
-    #     ON users.id = users_events.user_id 
-    #     JOIN events 
-    #     ON events.id = users_events.event_id 
-    #     WHERE users.id = %(id)s
-    #     ;"""
-    #     result = connectToMySQL(db).query_db(query,data)
-    #     # events = []
-    #     # for event in result:
-    #     #     events.append(cls(event))
-    #     result = result[0]
-    #     print(result)
-    #     event = cls(result)
-    #     print(event)
-    #     event.user = User.User(
-    #         {
-    #                 "id": result["user_id"],
-    #                 "first_name": result["first_name"],
-    #                 "last_name": result["last_name"],
-    #                 "email": result["email"],
-    #                 "password": result["password"],
-    #                 "created_at": result["uc"],
-    #                 "updated_at": result["uu"]
-    #         }
-    #     )
-    #     # print(events.user)
-    #     return event
-
 
     @classmethod
     def delete_event_by_id(cls, event_id):
@@ -185,7 +129,7 @@ class Event:
         if len(event_dict["location"]) < 8:
             flash("Location has to be at least 8 characters long.")
             valid = False
-        if len(event_dict["location"]) < 10:
-            flash("Name has to be at least 2 characters long.")
+        if len(event_dict["information"]) < 10:
+            flash("Information has to be at least 10 characters long.")
             valid = False
         return valid
