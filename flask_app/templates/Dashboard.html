@@ -21,7 +21,7 @@
             <h1>Welcome {{ user.first_name }} !!! </h1>
         </div>
         <div class="todayevent">
-            <p>Today is DATE and you have these events today :</p>
+            <p>Today you have these events:</p>
             <table>
                 <tr>
                     <th>Event Name</th>
@@ -33,7 +33,7 @@
                 <tr>
                     {%if user.id == event.user_id: %}
                     {% if event.date == time: %}
-                        <td>{{event.name}}</td>
+                        <td><a href="/eventinfo/{{event.id}}">{{event.name}}</a></td>
                         <td>{{event.location}}</td>
                         <td>{{event.num_of_users}}</td>
                         <td>{{event.time}}</td>
@@ -58,11 +58,38 @@
                     {% if event.date >= time: %}
                     <tr>
                         {%if user.id == event.user_id: %}
-                            <td>{{event.name}}</td>
-                            <td>{{event.location}}</td>
-                            <td>{{event.num_of_users}}</td>
-                            <td>{{event.date}}</td>
-                            <td>{{event.time}}</td>
+                        <td><a href="/eventinfo/{{event.id}}">{{event.name}}</a></td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.num_of_users}}</td>
+                        <td>{{event.date}}</td>
+                        <td>{{event.time}}</td>
+                        {%endif%}
+                    </tr>
+                    {%endif%}
+                {%endfor%}
+                </tr>
+            </table>
+        </div>
+        <div class="futureevents">
+            <p>These are your past events:</p>
+            <table>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Location Name</th>
+                    <th>Attendees</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                {%for event in events%}
+                    {% if event.date <= time: %}
+                    <tr>
+                        {%if user.id == event.user_id: %}
+                        <td><a href="/eventinfo/{{event.id}}">{{event.name}}</a></td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.num_of_users}}</td>
+                        <td>{{event.date}}</td>
+                        <td>{{event.time}}</td>
                         {%endif%}
                     </tr>
                     {%endif%}

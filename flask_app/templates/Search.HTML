@@ -10,6 +10,7 @@
     <title>Search</title>
 </head>
 <body class="black">
+    <script src="../static/filter-events.js"></script>
     <div>
         <div class="navbar">
             <nav>
@@ -21,7 +22,7 @@
         </div>
         <div class="searchbar">
             <h3>TCG LOCALS</h3>
-            <label for="TCGLocals">Search By:</label>
+            <!-- <label for="TCGLocals">Search By:</label>
             <form action="/event-search/game">
                 <select name="game" id="language">
                     <option value="" disabled selected hidden>Pick A Game</option>
@@ -33,7 +34,7 @@
                     <option value="MTG">MTG</option>
                 </select>
                 <input type="submit" value="Submit" class="myButton">
-            </form>
+            </form> -->
         </div>
         <div class="results">
             <table>
@@ -48,6 +49,7 @@
                     <th>Action</th>
                 </tr>
                 <!-- need multiple pages that the jinja syntax is checking by the id of the event, to filter when asked what type of event people are looking for. -->
+                <input type="text" id="event-name-filter" placeholder="Search for an event...">
                 {%for event in events%}
                     <tr>
                         <td>{{event.id}}</td>
